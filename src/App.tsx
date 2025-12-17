@@ -1,14 +1,21 @@
+import { Link, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+
 export default function App() {
   return (
-    <main style={{ fontFamily: "system-ui", padding: 24, lineHeight: 1.4 }}>
-      <h1>Hello Vibe 👋</h1>
-      <p>Vite + React + TypeScript (SWC) läuft lokal.</p>
+    <main style={{ fontFamily: "system-ui", padding: 24, lineHeight: 1.5 }}>
+      <nav style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
 
-      <ul>
-        <li>Dev-Server: localhost:5173</li>
-        <li>Nächster Schritt: Build + Preview + Deploy</li>
-      </ul>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </main>
   );
 }
-
